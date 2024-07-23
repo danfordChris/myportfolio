@@ -1,0 +1,8 @@
+django
+django-cors-headers
+weasyprint
+pillow
+djangorestframework
+gunicorn
+pdfkit
+pdfkit
