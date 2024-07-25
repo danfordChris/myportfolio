@@ -6,3 +6,9 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Projects
         fields = '__all__'
         
+
+
+class ContactSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactSubmission
+        fields = ['id', 'name', 'email', 'subject', 'message']

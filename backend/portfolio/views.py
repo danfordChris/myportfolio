@@ -79,11 +79,14 @@ def delete_project(request, pk):
         # Log the error here
         return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
-
-
-
-
+@api_view(['POST'])
+def submit_contact_form(request):
+    if request.method == 'POST':
+        serializer = ContactSubmissionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message': 'Form submitted successfully'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -119,3 +122,17 @@ def generate_cv(request):
     response['Content-Disposition'] = 'attachment; filename="cv.pdf"'
     return response
 
+
+
+
+
+
+from django.shortcuts import render
+from .models import Profile
+
+def cv_view(request):
+    profile = Profile.objects.prefetch_related('experiences', 'skills', 'education').first()
+    context = {
+        'profile': profile
+    }
+    return render(request, 'cv.html', context)

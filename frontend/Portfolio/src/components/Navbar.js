@@ -94,9 +94,9 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="https://soumyajitblogs.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
+                as={Link}
+                to="/Reach_me"
+                onClick={() => updateExpanded(false)}
               >
                 <FaEnvelope style={{ marginBottom: "2px" }} /> Reach Me
               </Nav.Link>

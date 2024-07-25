@@ -6,3 +6,5 @@ djangorestframework
 gunicorn
 pdfkit
 pdfkit
+
+fpdf

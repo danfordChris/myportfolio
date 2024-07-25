@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }} - Web Developer CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .section-header {
+            border-bottom: 2px solid #ff6384;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-4xl mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
+        <header class="flex items-center justify-between">
+            <div>
+                <h1 class="text-4xl font-bold text-blue-600">{{ profile.name }}</h1>
+                <h2 class="text-2xl text-gray-600">{{ profile.title }}</h2>
+            </div>
+            <div class="text-right">
+                <p>{{ profile.location }}</p>
+                <p>{{ profile.phone }}</p>
+                <p><a href="mailto:{{ profile.email }}" class="text-blue-500">{{ profile.email }}</a></p>
+                <p><a href="{{ profile.website }}" class="text-blue-500">{{ profile.website }}</a></p>
+            </div>
+        </header>
+        <section class="mt-8">
+            <h3 class="text-3xl font-semibold section-header">Profile</h3>
+            <p class="mt-4">I'm a passionate web designer with four years of experience. Designed creative and responsive websites with 99% client satisfaction.</p>
+        </section>
+        <section class="mt-8">
+            <h3 class="text-3xl font-semibold section-header">Experience</h3>
+            {% for experience in profile.experiences.all %}
+            <div class="mt-4">
+                <h4 class="text-xl font-semibold">{{ experience.company_name }} ({{ experience.start_date|date:"Y" }} - {% if experience.end_date %}{{ experience.end_date|date:"Y" }}{% else %}Present{% endif %})</h4>
+                <p class="italic">{{ experience.position }}</p>
+                <p>{{ experience.responsibilities }}</p>
+            </div>
+            {% endfor %}
+        </section>
+        <section class="mt-8">
+            <h3 class="text-3xl font-semibold section-header">Skills</h3>
+            <ul class="mt-4 grid grid-cols-2 gap-2">
+                {% for skill in profile.skills.all %}
+                <li>{{ skill.name }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="mt-8">
+            <h3 class="text-3xl font-semibold section-header">Education</h3>
+            {% for education in profile.education.all %}
+            <div class="mt-4">
+                <h4 class="text-xl font-semibold">{{ education.institution_name }} ({{ education.start_date|date:"Y" }} - {% if education.end_date %}{{ education.end_date|date:"Y" }}{% else %}Present{% endif %})</h4>
+                <p class="italic">{{ education.degree }}</p>
+            </div>
+            {% endfor %}
+        </section>
+    </div>
+</body>
+</html>
