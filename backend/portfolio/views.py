@@ -4,9 +4,10 @@ from .serializers import *
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.contrib.auth import authenticate
 
 
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from weasyprint import HTML
 import os
 
@@ -87,10 +88,43 @@ def submit_contact_form(request):
             serializer.save()
             return Response({'message': 'Form submitted successfully'}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+@api_view(['GET'])
+def get_contact_Submissions_count(request):
+    try:
+        total_submissions = ContactSubmission.objects.all()
+        serializer = ContactSubmissionSerializer(total_submissions, many=True)
+        data = {
+            'count': total_submissions.count(),
+            'submissions': serializer.data
+        }
+        return Response(data)
+    
+    except Exception as e:
+            # Log the error here
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    
 
 
 
 
+
+
+from django.contrib.auth import authenticate
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+@api_view(['POST'])
+def authenticate_user(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        return Response({'authenticated': True}, status=status.HTTP_200_OK)
+    return Response({'authenticated': False}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 

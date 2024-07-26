@@ -5,6 +5,7 @@ from .models import *
 
 admin.site.register(Projects)
 admin.site.register(ContactSubmission)
+
 #cv
 admin.site.register(Profile)
 admin.site.register(Experience)

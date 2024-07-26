@@ -10,7 +10,7 @@ function Projects() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:8000/projects/")
+    axios.get("https://danfordc.onrender.com/projects/")
       .then(response => {
         setProjects(response.data);
         setLoading(false);

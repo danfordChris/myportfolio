@@ -17,7 +17,7 @@ def populate_data():
         location="Temeke, Dar es Salaam - Tanzania",
         phone="+255 699 500 156",
         email="jurvisdanford329@gmail.com",
-        website="http://danfordchriss.io"
+        website="https://danford.vercel.app"
     )
 
     # Create Experience instances
