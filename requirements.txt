@@ -4,7 +4,17 @@ weasyprint
 pillow
 djangorestframework
 gunicorn
+
 pdfkit
 pdfkit
 
 fpdf
+
+
+
+
+
+
+
+
+

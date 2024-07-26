@@ -4,11 +4,11 @@ import { CgCPlusPlus } from "react-icons/cg";
 import {
   DiJavascript1,
   DiReact,
-  DiNodejs,
   DiMongodb,
   DiPython,
   DiGit,
   DiJava,
+  DiHtml5
 } from "react-icons/di";
 import {
   SiRedis,
@@ -16,6 +16,14 @@ import {
   SiNextdotjs,
   SiSolidity,
   SiPostgresql,
+  SiDjango,
+  SiMysql,
+  SiDocker,
+  SiJenkins,
+  SiGradle,
+  SiGithub,
+ 
+  SiNpm
 } from "react-icons/si";
 import { TbBrandGolang } from "react-icons/tb";
 
@@ -23,20 +31,25 @@ function Techstack() {
   const [hoveredTech, setHoveredTech] = useState("");
 
   const techs = [
-    { icon: <CgCPlusPlus />, name: "C++" },
+  
     { icon: <DiJavascript1 />, name: "JavaScript" },
-    { icon: <TbBrandGolang />, name: "Golang" },
-    { icon: <DiNodejs />, name: "Node.js" },
     { icon: <DiReact />, name: "React" },
     { icon: <SiSolidity />, name: "Solidity" },
     { icon: <DiMongodb />, name: "MongoDB" },
-    { icon: <SiNextdotjs />, name: "Next.js" },
-    { icon: <DiGit />, name: "Git" },
+    { icon: <SiNextdotjs />, name: "Next.js" },  
     { icon: <SiFirebase />, name: "Firebase" },
     { icon: <SiRedis />, name: "Redis" },
     { icon: <SiPostgresql />, name: "PostgreSQL" },
     { icon: <DiPython />, name: "Python" },
     { icon: <DiJava />, name: "Java" },
+    { icon: <SiDjango />, name: "Django" },
+    { icon: <DiHtml5 />, name: "HTML" },
+    { icon: <SiMysql />, name: "MySQL" },
+    { icon: <SiDocker />, name: "Docker" },  
+    { icon: <SiGradle />, name: "Gradle" },
+    { icon: <SiGithub />, name: "GitHub" },
+
+   
   ];
 
   return (

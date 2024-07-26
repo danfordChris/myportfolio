@@ -63,6 +63,7 @@ def populate_data():
         "Testing and Debugging",
         "Computer Literacy",
         "Strong Communication",
+        "Devops Engineering",
         "Excellent Problem-Solving"
     ]
 

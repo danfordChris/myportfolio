@@ -127,12 +127,48 @@ def generate_cv(request):
 
 
 
+# from django.shortcuts import render
+# from .models import Profile
+
+# def cv_view(request):
+#     profile = Profile.objects.prefetch_related('experiences', 'skills', 'education').first()
+#     context = {
+#         'profile': profile
+#     }
+#     return render(request, 'cv.html', context)
+
+
+
+
 from django.shortcuts import render
+from django.http import HttpResponse
 from .models import Profile
+from weasyprint import HTML
+import os
 
 def cv_view(request):
     profile = Profile.objects.prefetch_related('experiences', 'skills', 'education').first()
     context = {
         'profile': profile
     }
+    
+
+    
+    # Render the HTML template
+    html_string = render(request, 'cv.html', context).content.decode('utf-8')
+    
+    # Specify the directory and file name
+    save_path = '../frontend/Portfolio/src/Assets/cv.pdf'
+    
+    # Convert HTML to PDF and save to the specified path
+    HTML(string=html_string).write_pdf(save_path)
+    
+    # Read the PDF content
+    with open(save_path, 'rb') as pdf_file:
+        pdf_content = pdf_file.read()
+
+    # Create an HTTP response with the PDF content
+    response = HttpResponse(pdf_content, content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="cv.pdf"'
+    
     return render(request, 'cv.html', context)

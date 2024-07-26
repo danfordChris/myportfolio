@@ -10,16 +10,25 @@ import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
-  const [width, setWidth] = useState(1200);
+  const [width, setWidth] = useState(window.innerWidth);
   const [numPages, setNumPages] = useState(null);
 
   useEffect(() => {
-    setWidth(window.innerWidth);
+    const handleResize = () => setWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
+
+  const getPageScale = () => {
+    if (width > 1200) return 1.7;
+    if (width > 786) return 1.3;
+    return 0.6;
+  };
 
   return (
     <div>
@@ -48,7 +57,7 @@ function ResumeNew() {
                 <Page
                   key={`page_${index + 1}`}
                   pageNumber={index + 1}
-                  scale={width > 786 ? 1.7 : 0.6}
+                  scale={getPageScale()}
                   className="pdf-page"
                 />
               ))}
@@ -77,6 +86,18 @@ function ResumeNew() {
 
         .pdf-page {
           margin-bottom: 20px; /* Adjust as needed for spacing between pages */
+        }
+
+        @media (max-width: 786px) {
+          .pdf-page {
+            max-width: 100vw; /* Adjust to fit within the viewport width */
+          }
+        }
+
+        @media (max-width: 576px) {
+          .pdf-page {
+            max-width: 100vw; /* Adjust to fit within the viewport width */
+          }
         }
       `}</style>
     </div>

@@ -6,17 +6,34 @@ import {
   SiSlack,
   SiVercel,
   SiMacos,
+  SiNpm,
+  SiJenkins,
+  SiLinux,
+  SiDiscord,
+  SiRender,
+  SiSnyk,
 } from "react-icons/si";
+import {
+ DiGit,
+ 
+} from "react-icons/di";
 
 function Toolstack() {
   const [hoveredTool, setHoveredTool] = useState("");
 
   const tools = [
-    { icon: <SiMacos />, name: "macOS" },
     { icon: <SiVisualstudiocode />, name: "VS Code" },
     { icon: <SiPostman />, name: "Postman" },
     { icon: <SiSlack />, name: "Slack" },
+    { icon: <SiDiscord />, name: "Discord" },
+    { icon: <SiRender/>, name: "onRender"},
     { icon: <SiVercel />, name: "Vercel" },
+    { icon: <SiSnyk /> , name:"snyk"},
+    { icon: <DiGit />, name: "Git" },
+    { icon: <SiNpm />, name: "NPM" },
+    { icon: <SiJenkins />, name: "Jenkins" },
+    { icon: <SiLinux />, name: "Linux" },
+    { icon: <SiMacos />, name: "macOS" },
   ];
 
   return (
