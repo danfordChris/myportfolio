@@ -9,7 +9,7 @@ function AuthDialog({ show, onClose, onAuthenticate }) {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post('http://127.0.0.1:8001/api/authenticate/', { username, password })
+    axios.post('https://danfordc.onrender.com/api/authenticate/', { username, password })
       .then(response => {
         if (response.data.authenticated) {
           onAuthenticate();

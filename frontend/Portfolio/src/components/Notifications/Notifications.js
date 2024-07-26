@@ -12,7 +12,7 @@ function Notifications() {
   useEffect(() => {
     if (authenticated) {
       // Fetch notifications from the API
-      axios.get('http://127.0.0.1:8001/contact_form_count/')
+      axios.get('https://danfordc.onrender.com/contact_form_count/')
         .then(response => {
           setNotifications(response.data.submissions);
         })

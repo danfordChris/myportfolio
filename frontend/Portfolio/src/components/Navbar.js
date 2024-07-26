@@ -27,7 +27,7 @@ function NavBar() {
   useEffect(() => {
     async function fetchNotificationsCount() {
       try {
-        const response = await axios.get('http://127.0.0.1:8001/contact_form_count/');
+        const response = await axios.get('https://danfordc.onrender.com/contact_form_count/');
         setNotificationsCount(response.data.count);
       } catch (error) {
         console.error('Error fetching notifications count:', error);
