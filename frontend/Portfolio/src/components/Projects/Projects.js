@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Row, Col } from "react-bootstrap";
-import ProjectCard from "./ProjectCards";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Particle from "../Particle";
+import ProjectCard from "./ProjectCards";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -44,7 +44,7 @@ function Projects() {
           {projects.map(project => (
             <Col md={4} className="project-card" key={project.id}>
               <ProjectCard
-                imgPath={`http://127.0.0.1:8000${project.image}`}
+                imgPath={`https://danfordc.onrender.com${project.image}`}
                 isBlog={false}
                 title={project.title}
                 description={project.description}
