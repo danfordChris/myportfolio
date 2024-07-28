@@ -1,8 +1,8 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import Particle from "../Particle";
+import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
+import Particle from "../Particle";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
