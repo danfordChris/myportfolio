@@ -4,7 +4,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { ReactTyped } from "react-typed";
 import Avater from '../assets/images/avater.jpg';
-import '../assets/styles/Main.scss';
+import '../assets/styles/Main.css';
 
 function Main() {
   return (
